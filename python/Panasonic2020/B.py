@@ -1,8 +1,6 @@
 h, w = map(int, input().split())
 boad = h * w
-if boad < 4:
+if w == 1 and h == 1:
   print(1)
-elif boad % 2 == 1 and boad > 3:
-  print(boad // 2 + 1)
 else:
-  print(boad // 2)
+  print((boad + 1) // 2)
