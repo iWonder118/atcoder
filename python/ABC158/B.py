@@ -1,7 +1,4 @@
 n, a, b = map(int, input().split())
-q = n // (a + b)
-mod = n % (a + b)
-if mod <= a:
-  print(a * q + mod)
-else:
-  print(a * q)
+ans = n // (a+b) * a
+mod = n % (a+b)
+print(ans + min(a, mod))
