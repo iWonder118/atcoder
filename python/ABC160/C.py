@@ -1,0 +1,6 @@
+k, n = map(int,input().split())
+a = list(map(int, input().split()))
+houses = [0] * (k + 1)
+a_max = max(a)
+a_min = min(a)
+print(min)
