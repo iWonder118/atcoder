@@ -1,10 +1,14 @@
 n, m, x = map(int, input().split())
 A = list(map(int, input().split()))
 cost = 0
-goal = min(x, (n - x))
-for i in range(m):
-  if A[i] >= x and x < goal:
+for i in range(x, n+1):
+  if A.count(i) > 0:
     cost += 1
-  elif A[i] <= x and x > goal:
+cost_nomal = cost
+cost = 0 
+for i in range(1, x+1):
+  if A.count(i) > 0:
     cost += 1
-print(cost)
+cost_reverse = cost
+
+print(min(cost_nomal,cost_reverse))
