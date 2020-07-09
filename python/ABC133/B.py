@@ -1,7 +1,18 @@
 n, d = map(int, input().split())
-x = [[0] * d] * n
-x = [list(map(int, input().split())) for _ in range(n)]
-for i in range(n-1):
-  distance_total = 0
-  for now_, next_ in zip(x[i], x[i + 1]):
-    distance_total += (now_ - next_) ** 2
+distances = [list(map(int, input().split())) for _ in range(n)]
+ans = 0
+
+for i in range(n):
+    for j in range(i + 1, n):
+        diff_total = 0
+        for k in range(d):
+            diff = abs(distances[i][k] - distances[j][k])
+            diff_total += diff * diff
+
+        flag = False
+        for k in range(diff_total + 1):
+            if (k * k) == diff_total:
+                flag = True
+        if flag:
+            ans += 1
+print(ans)
