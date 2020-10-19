@@ -1,8 +1,7 @@
 r, g, b, n = map(int, input().split())
 ans = 0
-for i in range(3001):
-    for j in range(3001):
-        rg_total = r * i + g * j
-        if n >= rg_total and (n - rg_total) % b == 0:
+for i in range(n // r + 1):
+    for j in range((n - i * r) // g + 1):
+        if (n - i * r - j * g) % b == 0:
             ans += 1
 print(ans)
