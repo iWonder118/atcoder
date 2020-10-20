@@ -1,11 +1,12 @@
 import collections
-from math import factorial
 
 n = int(input())
-a = list(map(int, input().split()))
-k_pop_len = len(a) - 1
-for k in range(len(a)):
-  none_k = a.pop(k)
-  collections.Counter(none_k)
-  all_patterns = factorial(k_pop_len) // factorial(2) // factorial(k_pop_len - 2)
-  print(all_patterns - )
+balls = list(map(int, input().split()))
+count_balls = collections.Counter(balls)
+tot = 0
+for key in count_balls:
+    tot += count_balls[key] * (count_balls[key] - 1)
+tot //= 2
+
+for i in range(n):
+    print(tot - count_balls[balls[i]] + 1)
