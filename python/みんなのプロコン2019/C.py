@@ -1,11 +1,8 @@
 k, a, b = map(int, input().split())
-k -= 1
-if a >= b:
-    print(k + 2)
+if a + 1 >= b or a - 1 >= k:
+    print(k + 1)
 else:
-    time = k // a
-    mod = k % a
-    if k >= time * 2:
-        print(b * time + mod)
-    else:
-        print(b * (time - 1) + mod + a)
+    diff = b - a
+    time = (k - a + 1) // 2
+    mod = (k - a + 1) % 2
+    print(a + diff * time + mod)
