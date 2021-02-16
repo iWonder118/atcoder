@@ -1,6 +1,6 @@
 v, t, s, d = map(int, input().split())
 time = d / v
-if time < t and s < time:
-    print("Yes")
-else:
+if t <= time <= s:
     print("No")
+else:
+    print("Yes")
