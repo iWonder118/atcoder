@@ -7,6 +7,11 @@ for i in range(n):
         odd.append(numbers[i])
     else:
         even.append(numbers[i])
-ans = list(reversed(even)).extend(odd)
-print(" ".join(map(str, ans)))
-    
+if n % 2 == 0:
+    even.reverse()
+    even.extend(odd)
+    print(" ".join(map(str, even)))
+else:
+    odd.reverse()
+    odd.extend(even)
+    print(" ".join(map(str, odd)))
