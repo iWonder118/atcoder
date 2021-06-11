@@ -1,15 +1,20 @@
-n, m = map(int, input().split())
-conditions = [list(map(int, input().split())) for _ in range(m)]
-k = int(input())
-man = [list(map(int, input().split())) for _ in range(k)]
-dishs = [0] * 17
-tmp = []
-for i in range(k):
-    dishs[man[i][0]] += 1
-    dishs[man[i][1]] += 1
+import itertools
 
-ans = 0
-for condition in conditions:
-    if 0 < dishs[condition[0]] and 0 < dishs[condition[1]]:
-        ans += 1
-print(ans)
+N, M = map(int, input().split())
+conditions = [tuple(map(int, input().split())) for i in range(M)]
+
+K = int(input())
+choices = [tuple(map(int, input().split())) for i in range(K)]
+rs = 0
+
+for balls in itertools.product(*choices):
+    uniqueBalls = set(balls)
+
+    count = 0
+    for c1, c2 in conditions:
+        if c1 in uniqueBalls and c2 in uniqueBalls:
+            count += 1
+    
+    rs = max(rs, count)
+
+print(rs)
