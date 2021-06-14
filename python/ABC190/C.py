@@ -1,20 +1,24 @@
-import itertools
-
-N, M = map(int, input().split())
-conditions = [tuple(map(int, input().split())) for i in range(M)]
-
-K = int(input())
-choices = [tuple(map(int, input().split())) for i in range(K)]
-rs = 0
-
-for balls in itertools.product(*choices):
-    uniqueBalls = set(balls)
-
-    count = 0
-    for c1, c2 in conditions:
-        if c1 in uniqueBalls and c2 in uniqueBalls:
-            count += 1
-    
-    rs = max(rs, count)
-
-print(rs)
+n, m = map(int, input().split())
+conditions = []
+for i in range(m):
+    a, b = map(int, input().split())
+    conditions.append([a - 1, b - 1])
+k = int(input())
+people = []
+res = 0
+for i in range(k):
+    a, b = map(int, input().split())
+    people.append([a - 1, b - 1])
+for i in range(1 << k):
+    dish = [0] * n
+    for j in range(k):
+        if (i >> j & 1):
+            dish[people[j][0]] += 1
+        else:
+            dish[people[j][1]] += 1
+    res_tmp = 0
+    for j in range(m):
+        if dish[conditions[j][0]] and dish[conditions[j][1]]:
+            res_tmp += 1
+    res = max(res, res_tmp)
+print(res)
