@@ -1,16 +1,19 @@
 n = int(input())
 s = list(input())
+pre = s[:n]
+post = s[n:]
 q = int(input())
-numbers = [list(map(int, input().split())) for _ in range(q)]
-
 for i in range(q):
-    if numbers[i][0] == 1:
-        temp = s[numbers[i][1]]
-        s[numbers[i][1]] = s[numbers[i][2]]
-        s[numbers[i][2]] = temp
+    t, a, b = input().split()
+    a, b = int(a), int(b)
+    if t == '1':
+        if b <= n:
+            pre[a - 1], pre[b - 1] = pre[b - 1], pre[a - 1]
+        elif n < a:
+            post[a - n - 1], post[b - n - 1] = post[b - n - 1], post[a - n - 1]
+        else:
+            pre[a - 1], post[b - n - 1] = post[b - n - 1], pre[a - 1]
     else:
-        str_s = "".join(s)
-        print(str_s)
-        s = list(str_s[n:] + str_s[:n + 1])
+        pre, post = post, pre
 
-print("".join(s))
+print(''.join(pre + post))
