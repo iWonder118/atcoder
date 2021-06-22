@@ -1,11 +1,11 @@
-import itertools
-
-
 n = int(input())
-number = list(map(int, input().split()))
+numbers = list(map(int, input().split()))
 
-all = itertools.combinations(number, 2)
 total = 0
-for num in all:
-    total += (num[0] - num[1]) ** 2
+sum_A = sum_A2 = 0
+for i in range(n):
+    total += i * numbers[i]**2 - 2 * numbers[i] * sum_A + sum_A2
+    sum_A += numbers[i]
+    sum_A2 += numbers[i] ** 2
+
 print(total)
