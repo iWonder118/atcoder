@@ -1,4 +1,4 @@
-def template(i, value):
+def chmin(i, value):
     if dp[i] > value:
         dp[i] = value
 
@@ -10,7 +10,7 @@ dp[0] = 0
 
 for i in range(n):
     if i + 1 < n:
-        template(i + 1, dp[i] + abs(numbers[i] - numbers[i + 1]))
+        chmin(i + 1, dp[i] + abs(numbers[i] - numbers[i + 1]))
     if i + 2 < n:
-        template(i + 2, dp[i] + abs(numbers[i] - numbers[i + 2]))
+        chmin(i + 2, dp[i] + abs(numbers[i] - numbers[i + 2]))
 print(dp[n - 1])
