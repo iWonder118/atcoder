@@ -1,16 +1,8 @@
-from collections import Counter
-
-N = int(input())
-A = list(map(int, input().split()))
-cnt = Counter(A)
-
-ans = 0
-
-for x in range(-200, 200 + 1):
-    for y in range(x + 1, 200 + 1):
-        xcnt = cnt[x]
-        ycnt = cnt[y]
-        total = xcnt * ycnt * (x - y) ** 2
-        ans += total
-
+n = int(input())
+employees = [list(map(int, input().split())) for _ in range(n)]
+ans = 10 ** 9 + 1
+for i in range(n):
+    for j in range(n):
+        ans = min(ans, employees[i][0] + employees[j][1] if i == j else max(employees[i][0], employees[j][1]))
 print(ans)
+
