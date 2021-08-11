@@ -1,6 +1,10 @@
-h, w, n = map(int, input().split())
-number_cards = [list(map(int, input().split())) for _ in range(n)]
-cards = [[0] * w for _ in range(h)]
-for i in range(n):
-    cards[number_cards[i][0]][number_cards[i][1]] = i + 1
-    
+H, W, N = map(int, input().split())
+X, Y = [], []
+for i in range(N):
+    x, y = map(int, input().split())
+    X.append(x)
+    Y.append(y)
+Xdict = {x: i + 1 for i, x in enumerate(sorted(list(set(X))))}
+Ydict = {y: i + 1 for i, y in enumerate(sorted(list(set(Y))))}
+for i in range(N):
+    print(Xdict[X[i]], Ydict[Y[i]])
